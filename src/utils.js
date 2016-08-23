@@ -1,6 +1,7 @@
 import moment from 'moment';
 import 'moment-range';
 import getScrollbarSize from 'dom-helpers/util/scrollbarSize';
+import LunarCalendar from 'lunar-calendar';
 
 export const keyCodes = {
     enter: 13,
@@ -35,70 +36,73 @@ export function getMonthsForYear(year, min, max) {
 }
 
 export function getMonth(monthDate) {
-	let rows = {};
-	let daysInMonth = monthDate.daysInMonth();
-	let year = monthDate.year();
-	let month = monthDate.month();
+    let rows = {};
+    let daysInMonth = monthDate.daysInMonth();
+    let year = monthDate.year();
+    let month = monthDate.month();
 
-	let week, date, lastWeekVal;
-	let weekIndex = -1;
+    let lunar = LunarCalendar.calendar(year, month + 1);
 
-	for (let i = 0; i < daysInMonth; i++) {
-		date = moment(new Date(year,month,i+1));
-		week = date.week();
+    let week, date, lastWeekVal;
+    let weekIndex = -1;
 
-		if (week !== lastWeekVal) {
-			lastWeekVal = week;
-			weekIndex++;
-		}
+    for (let i = 0; i < daysInMonth; i++) {
+        date = moment(new Date(year, month, i + 1));
+        week = date.week();
 
-		if (!rows[weekIndex]) {
-			rows[weekIndex] = [];
-		}
+        if (week !== lastWeekVal) {
+            lastWeekVal = week;
+            weekIndex++;
+        }
 
-		rows[weekIndex].push({
-			date,
-			yyyymmdd: date.format('YYYYMMDD')
-		});
-	}
+        if (!rows[weekIndex]) {
+            rows[weekIndex] = [];
+        }
 
-	return {
-		date: monthDate,
-		rows: Object.keys(rows).map((row) => rows[row])
-	};
+        rows[weekIndex].push({
+            date,
+            yyyymmdd: date.format('YYYYMMDD'),
+            lunar: lunar.monthData[i]
+        });
+    }
+
+    return {
+        date: monthDate,
+        rows: Object.keys(rows).map((row) => rows[row])
+    };
 }
 
 export function getWeeksInMonth(date, locale) {
-	let first = moment(date).startOf('month');
-	let last = moment(date).endOf('month');
-	let firstWeek = first.locale(locale.name).week();
-	let lastWeek = last.locale(locale.name).week();
+    let first = moment(date).startOf('month');
+    let last = moment(date).endOf('month');
+    let firstWeek = first.locale(locale.name).week();
+    let lastWeek = last.locale(locale.name).week();
 
-	// For those tricky months...
-	//
-	// SCENARIO 1
-	// firstWeek = 48
-	// lastWeek = 1
-	//
-	// SCENARIO 2
-	// firstWeek = 48
-	// lastWeek = 5
-	if (firstWeek > lastWeek) {
-		if (firstWeek > 50) {
-			firstWeek = 0;
-		} else {
-			lastWeek = last.weeksInYear() + 1;
-		}
-	}
+    // For those tricky months...
+    //
+    // SCENARIO 1
+    // firstWeek = 48
+    // lastWeek = 1
+    //
+    // SCENARIO 2
+    // firstWeek = 48
+    // lastWeek = 5
+    if (firstWeek > lastWeek) {
+        if (firstWeek > 50) {
+            firstWeek = 0;
+        } else {
+            lastWeek = last.weeksInYear() + 1;
+        }
+    }
 
-	let rows = lastWeek - firstWeek;
+    let rows = lastWeek - firstWeek;
 
-	// If the last week contains 7 days, we need to add an extra row
-	if (last.clone().subtract(6,'day').locale(locale.name).day() == locale.week.dow) {
-		rows++;
-	}
+    // If the last week contains 7 days, we need to add an extra row
+    if (last.clone().subtract(6, 'day').locale(locale.name).day() == locale.week.dow) {
+        rows++;
+    }
 
-	return rows;
+    return rows;
 }
 
 export function getScrollSpeed(settings) {
@@ -108,25 +112,25 @@ export function getScrollSpeed(settings) {
         delay = settings.delay || 50; // in "ms" (higher means lower fidelity )
 
     function clear() {
-      lastPos = null;
-      delta = 0;
+        lastPos = null;
+        delta = 0;
     }
 
     clear();
 
-    return function(scrollY){
-      newPos = scrollY;
-      if ( lastPos != null ){ // && newPos < maxScroll
-        delta = newPos -  lastPos;
-      }
-      lastPos = newPos;
-      clearTimeout(timer);
-      timer = setTimeout(clear, delay);
-      return delta;
+    return function (scrollY) {
+        newPos = scrollY;
+        if (lastPos != null) { // && newPos < maxScroll
+            delta = newPos - lastPos;
+        }
+        lastPos = newPos;
+        clearTimeout(timer);
+        timer = setTimeout(clear, delay);
+        return delta;
     };
 }
 
-export function parseDate (date) {
+export function parseDate(date) {
     if (date) {
         if (!date._isAMomentObject) date = moment(date);
 
@@ -156,15 +160,15 @@ export function validParsedDate(props, propName, componentName) {
 }
 
 export function validLayout(props, propName, componentName) {
-	if (['portrait', 'landscape'].indexOf(props[propName]) == -1) {
-		return new Error(`Invalid prop \`${propName}\` supplied to ${componentName}. Should be one of \`landscape\` or \`portrait\`.`);
-	}
+    if (['portrait', 'landscape'].indexOf(props[propName]) == -1) {
+        return new Error(`Invalid prop \`${propName}\` supplied to ${componentName}. Should be one of \`landscape\` or \`portrait\`.`);
+    }
 }
 
 export function validDisplay(props, propName, componentName) {
-	if (['years', 'days'].indexOf(props[propName]) == -1) {
-		return new Error(`Invalid prop \`${propName}\` supplied to ${componentName}. Should be one of \`days\` or \`years\`.`);
-	}
+    if (['years', 'days'].indexOf(props[propName]) == -1) {
+        return new Error(`Invalid prop \`${propName}\` supplied to ${componentName}. Should be one of \`days\` or \`years\`.`);
+    }
 }
 
 export const scrollbarSize = getScrollbarSize();
