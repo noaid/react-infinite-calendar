@@ -18,7 +18,7 @@ describe("<Day/>", () => {
         const wrapper = shallow(
 			<Day
 				currentYear={2016}
-				date={{date, yyyymmdd: date.format('YYYYMMDD')}}
+				date={{date, yyyymmdd: date.format('YYYYMMDD'), lunar: {lunarDay: 0,lunarDayName: '三十'}  }}
 				day={5}
 				handleDayClick={onClick}
 				locale={defaultLocale}
@@ -34,7 +34,7 @@ describe("<Day/>", () => {
         const wrapper = shallow(
 			<Day
 				currentYear={2016}
-				date={{date, yyyymmdd: date.format('YYYYMMDD')}}
+				date={{date, yyyymmdd: date.format('YYYYMMDD'), lunar: {lunarDay: 0,lunarDayName: '三十'}}}
 				day={10}
 				handleDayClick={onClick}
 				isDisabled={true}
@@ -50,7 +50,7 @@ describe("<Day/>", () => {
         const wrapper = mount(
 			<Day
 				currentYear={2016}
-				date={{date, yyyymmdd: date.format('YYYYMMDD')}}
+				date={{date, yyyymmdd: date.format('YYYYMMDD'), lunar: {lunarDay: 0,lunarDayName: '三十'}}}
 				day={8}
 				isSelected={true}
 				locale={defaultLocale}
@@ -70,7 +70,7 @@ describe("<Day/>", () => {
         const wrapper = mount(
 			<Day
 				currentYear={2016}
-				date={{date, yyyymmdd: date.format('YYYYMMDD')}}
+				date={{date, yyyymmdd: date.format('YYYYMMDD'), lunar: {lunarDay: 0,lunarDayName: '三十'}}}
 				day={8}
 				isSelected={true}
 				locale={defaultLocale}
