@@ -1,22 +1,22 @@
 {
-  "name": "react-infinite-calendar",
+  "name": "react-infinite-calendar-lunar",
   "version": "1.2.0",
   "description": "Infinite scrolling date-picker built with React, with localization, themes, keyboard support, and more.",
   "author": {
-    "name": "Clauderic Demers",
-    "email": "me@ced.io"
+    "name": "Charles",
+    "email": "charles.tanchao@gmail.com"
   },
   "user": "clauderic",
-  "homepage": "https://github.com/clauderic/react-infinite-calendar",
+  "homepage": "https://github.com/y1feng200156/react-infinite-calendar",
   "main": "dist/commonjs/index.js",
   "jsnext:main": "dist/es6/index.js",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/clauderic/react-infinite-calendar.git"
+    "url": "https://github.com/y1feng200156/react-infinite-calendar.git"
   },
   "bugs": {
-    "url": "https://github.com/clauderic/react-infinite-calendar/issues"
+    "url": "https://github.com/y1feng200156/react-infinite-calendar/issues"
   },
   "keywords": [
     "react",
