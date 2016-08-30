@@ -157,20 +157,21 @@
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
-          user-select: none; }
+          user-select: none;
+  position: relative;
+  color: #33800d; }
+  .Cal__Day__root.Cal__Day__weekend {
+    color: #cc1414; }
   .Cal__Day__root.Cal__Day__enabled.Cal__Day__highlighted, .Cal__Day__root.Cal__Day__enabled:active, .Cal__Day__root.Cal__Day__enabled:hover {
     position: relative;
     z-index: 1; }
     .Cal__Day__root.Cal__Day__enabled.Cal__Day__highlighted:before, .Cal__Day__root.Cal__Day__enabled:active:before, .Cal__Day__root.Cal__Day__enabled:hover:before {
       content: '';
       position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 52px;
-      height: 52px;
-      margin-top: -26px;
-      margin-left: -26px;
-      border-radius: 50%;
+      top: 1px;
+      left: 0;
+      width: 100%;
+      height: 100%;
       background-color: #EFEFEF;
       z-index: -1; }
   .Cal__Day__root.Cal__Day__enabled:hover:before {
@@ -189,13 +190,10 @@
     .Cal__Day__root.Cal__Day__today:before {
       content: '';
       position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 52px;
-      height: 52px;
-      margin-top: -26px;
-      margin-left: -26px;
-      border-radius: 50%;
+      top: 1px;
+      left: 0;
+      width: 100%;
+      height: 100%;
       box-shadow: inset 0 0 0 1px;
       z-index: -1; }
     .Cal__Day__root.Cal__Day__today.Cal__Day__disabled:before {
@@ -209,20 +207,17 @@
     .Cal__Day__root.Cal__Day__selected .Cal__Day__selection {
       content: '';
       position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 52px;
-      height: 52px;
-      margin-top: -26px;
-      margin-left: -26px;
-      border-radius: 50%;
+      top: 1px;
+      left: 0;
+      width: 100%;
+      height: 100%;
       line-height: 56px;
       z-index: 2; }
       .Cal__Day__root.Cal__Day__selected .Cal__Day__selection .Cal__Day__month {
         top: 9px; }
       .Cal__Day__root.Cal__Day__selected .Cal__Day__selection .Cal__Day__day {
         position: relative;
-        top: 5px;
+        top: -10px;
         font-weight: bold;
         font-size: 18px; }
   .Cal__Day__root.Cal__Day__disabled {
@@ -230,7 +225,9 @@
     color: #AAA;
     cursor: not-allowed; }
 
-.Cal__Day__month, .Cal__Day__year {
+.Cal__Day__month,
+.Cal__Day__lunar,
+.Cal__Day__year {
   position: absolute;
   left: 0;
   right: 0;
@@ -242,6 +239,9 @@
 
 .Cal__Day__year {
   bottom: 5px; }
+
+.Cal__Day__lunar {
+  top: 30px; }
 .Cal__Month__root {
   position: relative;
   background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.05) 100%);
@@ -432,7 +432,8 @@
   .Cal__Container__root .VirtualScroll {
     -webkit-overflow-scrolling: touch;
     outline: none;
-    overflow-x: hidden !important; }
+    overflow-x: hidden !important;
+    height: calc(100vh - 98px - 49px) !important; }
   .Cal__Container__root .Grid__innerScrollContainer {
     width: 100% !important; }
 
