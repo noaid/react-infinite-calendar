@@ -19,7 +19,7 @@ const style = {
 	day: dayStyle
 };
 
-export default class InfiniteCalendar extends Component {
+export default class InfiniteCalendarLunar extends Component {
 	constructor(props) {
 		super();
 
