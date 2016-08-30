@@ -16,7 +16,7 @@ const style = {
 
 chai.use(chaiEnzyme());
 
-describe("<InfiniteCalendar/> Selected Date", function() {
+describe("<InfiniteCalendarLunar/> Selected Date", function() {
 	it('should default to `today` if no selected date is provided', () => {
 		const wrapper = mount(<InfiniteCalendar/>);
 		let selected = wrapper.find(`.${style.day.selected}`);
@@ -58,7 +58,7 @@ describe("<InfiniteCalendar/> Selected Date", function() {
 	})
 });
 
-describe("<InfiniteCalendar/> Lifecycle Methods", function() {
+describe("<InfiniteCalendarLunar/> Lifecycle Methods", function() {
 	it('calls componentDidMount', () => {
 		const spy = sinon.spy(InfiniteCalendar.prototype, 'componentDidMount');
 		mount(<InfiniteCalendar />);
@@ -120,7 +120,7 @@ describe("<InfiniteCalendar/> Lifecycle Methods", function() {
 
 });
 
-describe("<InfiniteCalendar/> Methods", function() {
+describe("<InfiniteCalendarLunar/> Methods", function() {
 	it('should scroll to a given date when scrollToDate is called', () => {
 		// Bootstrapping
         const div = document.createElement('div');
@@ -136,7 +136,7 @@ describe("<InfiniteCalendar/> Methods", function() {
 	})
 });
 
-describe("<InfiniteCalendar/> Callback Events", function() {
+describe("<InfiniteCalendarLunar/> Callback Events", function() {
 	this.timeout(3000);
 
 	it('should fire a callback onKeyDown', (done) => {
@@ -150,7 +150,7 @@ describe("<InfiniteCalendar/> Callback Events", function() {
 	it('should fire a callback onScroll', (done) => {
 		const onScroll = sinon.spy();
 
-		// No need to simulate a scroll event, <InfiniteCalendar/> already scrolls to the selected date on componentDidMount
+		// No need to simulate a scroll event, <InfiniteCalendarLunar/> already scrolls to the selected date on componentDidMount
 		mount(<InfiniteCalendar onScroll={onScroll} />);
 		expect(onScroll.calledOnce).to.equal(true);
 		setTimeout(done);
@@ -197,7 +197,7 @@ describe("<InfiniteCalendar/> Callback Events", function() {
 	})
 });
 
-describe("<InfiniteCalendar/> Keyboard Support", function() {
+describe("<InfiniteCalendarLunar/> Keyboard Support", function() {
 	this.timeout(5000);
 
 	it('should add one day when pressing the right arrow', (done) => {

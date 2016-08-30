@@ -24,7 +24,7 @@ describe("<Today/>", function () {
         // Bootstrapping
         const div = document.createElement('div');
         document.body.appendChild(div);
-        const inst = ReactDOM.render(<InfiniteCalendar/>, div);
+        const inst = ReactDOM.render(<InfiniteCalendarLunar/>, div);
 
 		inst.refs.List.scrollTo(0); // Should default to moment();
 
@@ -39,7 +39,7 @@ describe("<Today/>", function () {
         // Bootstrapping
         const div = document.createElement('div');
         document.body.appendChild(div);
-        const inst = ReactDOM.render(<InfiniteCalendar/>, div);
+        const inst = ReactDOM.render(<InfiniteCalendarLunar/>, div);
 
 		inst.refs.List.scrollTo(inst.getDateOffset(moment().add(3, 'month')))
 
@@ -55,7 +55,7 @@ describe("<Today/>", function () {
         }, 200)
     })
     it('should not be initially visible, no matter the selected date', () => {
-        const wrapper = shallow(<InfiniteCalendar/>);
+        const wrapper = shallow(<InfiniteCalendarLunar/>);
         expect(wrapper.state().showToday).to.equal(undefined);
     })
 });

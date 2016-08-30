@@ -1,6 +1,6 @@
 {
   "name": "react-infinite-calendar-lunar",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Infinite scrolling date-picker built with React, with localization, themes, keyboard support, and more.",
   "author": {
     "name": "Charles",
@@ -60,8 +60,8 @@
   "peerDependencies": {
     "react": "^0.14.0 || ^15.0.0",
     "react-dom": "^0.14.0 || ^15.0.0",
-    "react-addons-css-transition-group": "^0.14.0 || ^15.0.0",
-    "react-addons-shallow-compare": "^0.14.0 || ^15.0.0"
+    "react-addons-css-transition-group": "^15.3.1",
+    "react-addons-shallow-compare": "^15.3.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",

@@ -4,7 +4,7 @@ var autoprefixer = require('autoprefixer');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var argv = require('yargs').argv;
 var minify = Boolean(argv.minify);
-var outputName = 'react-infinite-calendar';
+var outputName = 'react-infinite-calendar-lunar';
 var plugins = {
     default: [
         new ExtractTextPlugin('../../styles.css')
@@ -27,7 +27,7 @@ module.exports = {
     output: {
         path: path.join(__dirname, 'dist/umd'),
         filename: (minify) ? outputName + '.min.js' : outputName + '.js',
-        library: 'InfiniteCalendar',
+        library: 'InfiniteCalendarLunar',
         libraryTarget: 'umd'
     },
     externals: {
