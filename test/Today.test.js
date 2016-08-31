@@ -6,7 +6,7 @@ import { shallow } from 'enzyme';
 import sinon from 'sinon';
 import moment from 'moment';
 import Today from '../src/Today';
-import InfiniteCalendar from '../src/index';
+import InfiniteCalendarLunar from '../src/index';
 import defaultTheme from '../src/theme';
 import defaultLocale from '../src/locale';
 
